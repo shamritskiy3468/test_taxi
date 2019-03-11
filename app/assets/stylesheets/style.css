@@ -6,7 +6,7 @@ Template Name: organic food store
 
 /*main css start*/
 body{
-	width:100%;
+	width: 100%;
 	font-size: 16px;
 	line-height:24px;
 	color: #404040;
@@ -613,7 +613,7 @@ label{
 .of_testimonial_wrapper{
 	width: 100%;
 	float: left;
-	background-image: url('../images/taxi_large%20.jpg');
+	background-image: url('/images/taxi_large%20.jpg');
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
