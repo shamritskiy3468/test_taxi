@@ -1,16 +1,23 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } 
+  #devise_for :users
+  devise_for :admin_users
+
   get 'pages/about'
   get 'pages/index'
   get 'pages/contact'
   get 'pages/home'
 
-  namespace :admin do
-      resources :cars
-      resources :drivers
-      resources :places
+  root to: "pages#index"
 
-      root to: "cars#index"
-    end
+  namespace :admin do
+    resources :cars
+    resources :drivers
+    resources :places
+    resources :clients
+    resources :users
+    root to: "cars#index"
+  end
     
   resources :places
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
