@@ -1,8 +1,8 @@
 <% provide :head_tags do %>
-  <meta name='turbolinks-visit-control' content='reload'>
-  <script>
-      document.addEventListener("DOMContentLoaded", initMap2);
-  </script>
+    <meta name='turbolinks-visit-control' content='reload'>
+    <script>
+        document.addEventListener("DOMContentLoaded", initMap2);
+    </script>
 <% end %>
 
 <%= form_with(model: place, local: true) do |form| %>
@@ -17,23 +17,23 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :latitude %>
-    <%= form.text_field :latitude %>
+    <%= form.text_field :latitude, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :longitude %>
-    <%= form.text_field :longitude %>
+    <%= form.text_field :longitude, class: "form-control" %>
   </div>
 
   <p>
-  <div id="map2"></div>
+    <div id="map2"></div>
   </p>
 
   <div class="actions">

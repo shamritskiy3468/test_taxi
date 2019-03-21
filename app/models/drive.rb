@@ -1,0 +1,3 @@
+class Drive < ApplicationRecord
+	
+end

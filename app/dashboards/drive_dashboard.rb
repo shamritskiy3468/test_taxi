@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class ClientDashboard < Administrate::BaseDashboard
+class DriveDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,10 +9,11 @@ class ClientDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    name: Field::String,
-    phone: Field::String,
-    email: Field::String,
-    content: Field::String,
+    driver_id: Field::Number,
+    car_id: Field::Number,
+    user_id: Field::Number,
+    place_id: Field::Number,
+    destination_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -24,19 +25,20 @@ class ClientDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
-    :name,
-    :phone,
-    :email,
+    :driver_id,
+    :car_id,
+    :user_id,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
-    :name,
-    :phone,
-    :email,
-    :content, 
+    :driver_id,
+    :car_id,
+    :user_id,
+    :place_id,
+    :destination_id,
     :created_at,
     :updated_at,
   ].freeze
@@ -45,16 +47,17 @@ class ClientDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :name,
-    :phone,
-    :email,
-    :content,
+    :driver_id,
+    :car_id,
+    :user_id,
+    :place_id,
+    :destination_id,
   ].freeze
 
-  # Overwrite this method to customize how clients are displayed
+  # Overwrite this method to customize how drives are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(client)
-  #   "Client ##{client.id}"
+  # def display_resource(drive)
+  #   "Drive ##{drive.id}"
   # end
 end
