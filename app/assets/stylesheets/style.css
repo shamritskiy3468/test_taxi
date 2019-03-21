@@ -613,7 +613,8 @@ label{
 .of_testimonial_wrapper{
 	width: 100%;
 	float: left;
-	background-image: url('../images/taxi_large.jpg');
+/*    background-color: #d11246;*/
+	background-image: url("reek.jpg");
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
