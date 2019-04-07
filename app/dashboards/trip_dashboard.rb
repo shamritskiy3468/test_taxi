@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class DriveDashboard < Administrate::BaseDashboard
+class TripDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,14 +8,9 @@ class DriveDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    driver: Field::BelongsTo,
     id: Field::Number,
-    driver_id: Field::Number,
     car_id: Field::Number,
-    user_id: Field::Number,
-    place_id: Field::Number,
-    destination_id: Field::Number,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,40 +19,31 @@ class DriveDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :driver,
     :id,
-    :driver_id,
     :car_id,
-    :user_id,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :driver,
     :id,
-    :driver_id,
     :car_id,
-    :user_id,
-    :place_id,
-    :destination_id,
-    :created_at,
-    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :driver_id,
+    :driver,
     :car_id,
-    :user_id,
-    :place_id,
-    :destination_id,
   ].freeze
 
-  # Overwrite this method to customize how drives are displayed
+  # Overwrite this method to customize how trips are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(drive)
-  #   "Drive ##{drive.id}"
+  # def display_resource(trip)
+  #   "Trip ##{trip.id}"
   # end
 end

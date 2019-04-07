@@ -1,3 +1,3 @@
 class Driver < ApplicationRecord
-	belongs_to :drive
+	belongs_to :trip
 end

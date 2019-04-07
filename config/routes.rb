@@ -14,9 +14,8 @@ Rails.application.routes.draw do
     resources :cars
     resources :drivers
     resources :places
-    resources :clients
     resources :users
-    resources :drives
+    resources :trips
     root to: "cars#index"
   end
     

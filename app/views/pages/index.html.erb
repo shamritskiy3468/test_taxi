@@ -13,11 +13,11 @@
           <a class="btn btn-info hidden visible-sm visible-xs" data-toggle="collapse" data-target="#demo"><i class="fa fa-bars" aria-hidden="true"></i></a>
           <div class="of_menu">
             <ul>
-              <li><a href="index.html">Домой</a></li>
-              <li><a href="service.html">Связаться</a></li>
+              <li><a href="<%= pages_index_path %>">Домой</a></li>
+              <li><a href="<%= pages_contact_path %>">Связаться</a></li>
               <li><a href="product.html">Заказ</a></li>
               <li><a href="about.html">Регистрация</a></li>
-              <li><a href="contact.html">Войти</a></li>
+              <li><a href="<%= new_user_session_path %>">Войти</a></li>
             </ul>
             <input type="text" name="search" placeholder="Search" class="form-control">
           </div>
@@ -53,7 +53,7 @@
         <div class="about_section">
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="about_img">
-              
+              <img src="app/assets/images/taxi_first.jpg" alt="Fuck" class="img-responsive">
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -85,7 +85,29 @@
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="categories_section">
               <div class="categories_img">
-                <img src="http://via.placeholder.com/263x175" alt="" class="img-responsive">
+                <img src="<%= image_url('bmw4.png') %>" alt="" class="img-responsive">
+              </div>
+              <div class="categories_detail">
+                <h3>Audi A5</h3>
+                <p>15 products</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="categories_section">
+              <div class="categories_img">
+                <img src="<%= image_url('bmw3.png') %>" width="263px" height="175px" alt="" class="img-responsive">
+              </div>
+              <div class="categories_detail">
+                <h3>Mersedes Benz s500</h3>
+                <p>15 products</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="categories_section">
+              <div class="categories_img">
+                <img src="<%= image_url('bmw.png') %>" width="263px" height="175px" alt="" class="img-responsive">
               </div>
               <div class="categories_detail">
                 <h3>fruits</h3>
@@ -96,29 +118,7 @@
           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="categories_section">
               <div class="categories_img">
-                <img src="http://via.placeholder.com/263x175" alt="" class="img-responsive">
-              </div>
-              <div class="categories_detail">
-                <h3>fruits</h3>
-                <p>15 products</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="categories_section">
-              <div class="categories_img">
-                <img src="http://via.placeholder.com/263x175" alt="" class="img-responsive">
-              </div>
-              <div class="categories_detail">
-                <h3>fruits</h3>
-                <p>15 products</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="categories_section">
-              <div class="categories_img">
-                <img src="http://via.placeholder.com/263x175" alt="" class="img-responsive">
+                <img src="<%= image_url('bmw2.png') %>" width="263px" height="175px" alt="" class="img-responsive">
               </div>
               <div class="categories_detail">
                 <h3>fruits</h3>
@@ -137,12 +137,12 @@
       <div class="row">
         <div class="col-md-12 col-sm-12">
           <div class="ch_heading_wrapper">
-            <h1>Why Choose Us</h1>
+            <h1>Почему стоит выбрать нас</h1>
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <div class="ehy_choose_img">
-            <img src=<%= image_url('man.png') %> alt="" class="img-responsive">
+            <img src="<%= image_url('man.png') %>" alt="" class="img-responsive">
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -153,8 +153,8 @@
                   <span class="flaticon-tree-leaf"></span>
                 </div>
                 <div class="choose_detail">
-                  <h2>100%  Organic Food</h2>
-                  <p>It is a long established fact that a reader will be distracted by the readable contentof a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution.</p>
+                  <h2>Надёжная система авторизации и хранения данных</h2>
+                  <p>Ваши данные шифруются мощным алгоритмом bycrypt поэтому можно забыть о страхе поерять личные данные с сайта. Система аутентификации не позволит кому либо кроме вас заказывать такси с привязанной карты</p>
                 </div>
               </li>
               <li>
@@ -162,8 +162,8 @@
                   <span class="flaticon-check-mark"></span>
                 </div>
                 <div class="choose_detail">
-                  <h2>100%  Organic Food</h2>
-                  <p>It is a long established fact that a reader will be distracted by the readable contentof a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution.</p>
+                  <h2>Удобство использования</h2>
+                  <p>Имея учётную запись нашего сервиса вы можете легко и быстро заказать такси в любую точку города Минска, всего лишь в пару кликов, указав нпару моментов.</p>
                 </div>
               </li>
               <li>
@@ -171,17 +171,8 @@
                   <span class="flaticon-truck"></span>
                 </div>
                 <div class="choose_detail">
-                  <h2>100%  Organic Food</h2>
-                  <p>It is a long established fact that a reader will be distracted by the readable contentof a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution.</p>
-                </div>
-              </li>
-              <li>
-                <div class="choose_icon">
-                  <span class="flaticon-trophy"></span>
-                </div>
-                <div class="choose_detail">
-                  <h2>100%  Organic Food</h2>
-                  <p>It is a long established fact that a reader will be distracted by the readable contentof a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution.</p>
+                  <h2>Простота и понятноть</h2>
+                  <p>Слова излишни, просто попробуйте.</p>
                 </div>
               </li>
             </ul>

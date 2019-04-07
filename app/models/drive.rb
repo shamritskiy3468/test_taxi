@@ -1,3 +1,0 @@
-class Drive < ApplicationRecord
-	
-end

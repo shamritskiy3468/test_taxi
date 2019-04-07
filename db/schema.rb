@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_18_141620) do
+ActiveRecord::Schema.define(version: 2019_04_01_132246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,15 +35,6 @@ ActiveRecord::Schema.define(version: 2019_03_18_141620) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "clients", force: :cascade do |t|
-    t.string "name"
-    t.string "phone"
-    t.string "email"
-    t.string "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "destinations", force: :cascade do |t|
     t.decimal "latitude"
     t.decimal "longitude"
@@ -58,22 +49,17 @@ ActiveRecord::Schema.define(version: 2019_03_18_141620) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "drives", force: :cascade do |t|
-    t.integer "driver_id"
-    t.integer "car_id"
-    t.integer "user_id"
-    t.integer "place_id"
-    t.integer "destination_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "places", force: :cascade do |t|
     t.string "name"
     t.decimal "latitude"
     t.decimal "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer "driver_id"
+    t.integer "car_id"
   end
 
   create_table "users", force: :cascade do |t|
