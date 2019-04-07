@@ -5,9 +5,8 @@
       <div class="row">
         <div class="col-lg-2 col-md-2 col-sm-8 col-xs-8">
           <div class="of_logo">
-            <a href="index.html"><img src="images/logo.png" alt=""></a>
+            <a href="index.html"><img src="<%= image_url('main_logo.png')%>" width="35%" height="35%" alt=""></a>
           </div>
-
         </div>
         <div class="col-lg-9 col-md-9 col-sm-2 col-xs-2">
           <a class="btn btn-info hidden visible-sm visible-xs" data-toggle="collapse" data-target="#demo"><i class="fa fa-bars" aria-hidden="true"></i></a>
@@ -22,11 +21,6 @@
             <input type="text" name="search" placeholder="Search" class="form-control">
           </div>
         </div>
-        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-          <div class="of_search">
-            <a href="#"><span class="flaticon-magnifier"></span></a>
-          </div>
-        </div>
       </div>
     </div>
     <div class="of_menu collapse" id="demo">
@@ -37,7 +31,6 @@
         <li><a href="about.html">about</a></li>
         <li><a href="contact.html">contact</a></li>
       </ul>
-      <input type="text" name="search" placeholder="Search" class="form-control">
     </div>
   </div>
   <!--header end-->
@@ -53,7 +46,7 @@
         <div class="about_section">
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="about_img">
-              <img src="app/assets/images/taxi_first.jpg" alt="Fuck" class="img-responsive">
+              <img src=" <%= image_url('zadr.jpg') %>" alt="Fuck" class="img-responsive">
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

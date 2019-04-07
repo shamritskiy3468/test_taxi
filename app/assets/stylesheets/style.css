@@ -223,7 +223,7 @@ label{
 	font-weight:700;
 	text-transform:capitalize;
 	position:relative;
-    color: black;
+    color: #ffffff;
 	padding-bottom:20px;
 }
 .ch_heading_wrapper h1:before {
@@ -1523,12 +1523,11 @@ label{
 	    width: 32px;
 	    padding: 0;
 	    float: right;
-	    background-color: #fff;
+	    background-color: #212121;
 	    margin: 34px 0;
 	    font-size: 18px;
-	    border-radius: 0;
-	    color: #837A75;
-	    border-color: #fff;
+	    color: #ffffff;
+        border: none;
 	}
 	.of_menu{
 		display: none;
