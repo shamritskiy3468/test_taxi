@@ -1,5 +1,4 @@
 // Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
 
 function initMap(lat, lng) {
     var myCoords = new google.maps.LatLng(lat, lng);
@@ -8,12 +7,15 @@ function initMap(lat, lng) {
     zoom: 14
     };
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    var marker = new google.maps.Marker({
+        position: myCoords,
+        map: map
+    });
 }
 
 function initMap2() {
     var lat = document.getElementById('place_latitude').value;
     var lng = document.getElementById('place_longitude').value;
-    
     // if not defined create default position
     if (!lat || !lng){
         lat=51.5;
@@ -26,6 +28,7 @@ function initMap2() {
     center: myCoords,
     zoom: 14
     };
+    console.log("Initializeing");
     var map = new google.maps.Map(document.getElementById('map2'), mapOptions);
     var marker = new google.maps.Marker({
         position: myCoords,
@@ -57,3 +60,14 @@ function initMap2() {
         map.panTo(marker.getPosition());   
     });
 }
+
+
+
+    // loc.lat = google.loader.ClientLocation.latitude;
+    // loc.lng = google.loader.ClientLocation.longitude;
+    // var latlng = new google.maps.LatLng(loc.lat, loc.lng);
+    // geocoder.geocode({'latLng': latlng}, function(results, status) {
+    //     if(status == google.maps.GeocoderStatus.OK) {
+    //         alert(results[0]['formatted_address']);
+    //     };
+    // });
