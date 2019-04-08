@@ -8,9 +8,9 @@ class TripDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    car: Field::BelongsTo,
+    driver: Field::BelongsTo,
     id: Field::Number,
-    driver_id: Field::Number,
-    car_id: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -19,25 +19,25 @@ class TripDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :car,
+    :driver,
     :id,
-    :driver_id,
-    :car_id,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :car,
+    :driver,
     :id,
-    :driver_id,
-    :car_id,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :driver_id,
-    :car_id,
+    :car,
+    :driver,
   ].freeze
 
   # Overwrite this method to customize how trips are displayed
