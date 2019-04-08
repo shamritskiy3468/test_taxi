@@ -1,3 +1,4 @@
 class Car < ApplicationRecord
-	belongs_to :trip
+	has_many :trips
+	has_many :drivers, through: :trips
 end

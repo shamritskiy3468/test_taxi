@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_132246) do
+ActiveRecord::Schema.define(version: 2019_04_08_181101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 2019_04_01_132246) do
     t.integer "exp_years"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "trip_id"
+    t.index ["trip_id"], name: "index_drivers_on_trip_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -58,8 +60,10 @@ ActiveRecord::Schema.define(version: 2019_04_01_132246) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.integer "driver_id"
-    t.integer "car_id"
+    t.bigint "car_id"
+    t.bigint "driver_id"
+    t.index ["car_id"], name: "index_trips_on_car_id"
+    t.index ["driver_id"], name: "index_trips_on_driver_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,4 +91,7 @@ ActiveRecord::Schema.define(version: 2019_04_01_132246) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "drivers", "trips"
+  add_foreign_key "trips", "cars"
+  add_foreign_key "trips", "drivers"
 end
