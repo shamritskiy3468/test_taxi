@@ -22,6 +22,7 @@ gem 'administrate'
 #gem 'omniauth-google-oauth2', '~> 0.2.2'
 gem 'omniauth-facebook'
 # Use CoffeeScript for .coffee assets and views
+gem "letter_opener", :group => :development
 gem 'coffee-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'

@@ -10,7 +10,10 @@ class TripDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     car: Field::BelongsTo,
     driver: Field::BelongsTo,
+    user: Field::BelongsTo,
     id: Field::Number,
+    name: Field::String,
+    pass_count: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -21,6 +24,7 @@ class TripDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :car,
     :driver,
+    :user,
     :id,
   ].freeze
 
@@ -29,7 +33,10 @@ class TripDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :car,
     :driver,
+    :user,
     :id,
+    :name,
+    :pass_count,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -38,6 +45,9 @@ class TripDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :car,
     :driver,
+    :user,
+    :name,
+    :pass_count,
   ].freeze
 
   # Overwrite this method to customize how trips are displayed

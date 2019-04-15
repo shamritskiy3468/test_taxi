@@ -14,9 +14,14 @@
             <ul>
               <li><a href="<%= pages_index_path %>">Домой</a></li>
               <li><a href="<%= pages_contact_path %>">Связаться</a></li>
-              <li><a href="product.html">Заказ</a></li>
-              <li><a href="about.html">Регистрация</a></li>
-              <li><a href="<%= new_user_session_path %>">Войти</a></li>
+              <li><a href="product.html">Заказ</a></li> 
+              <li><%= link_to 'Регистрация', new_user_registration_path %></li>
+              <% if !user_signed_in? %>
+                <li><a href="<%= new_user_session_path %>">Войти</a></li>
+                <li><a href="<%= user_facebook_omniauth_authorize_path %>">Facebook</a></li>
+              <% else %>
+                <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
+              <% end %>
             </ul>
             <input type="text" name="search" placeholder="Search" class="form-control">
           </div>
@@ -71,7 +76,7 @@
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="ch_heading_wrapper">
-            <h1>В наличии много машин</h1>
+            <h1 style="color: black;">В наличии много машин</h1>
           </div>
         </div>
         <div class="of_categories">
@@ -130,7 +135,7 @@
       <div class="row">
         <div class="col-md-12 col-sm-12">
           <div class="ch_heading_wrapper">
-            <h1>Почему стоит выбрать нас</h1>
+            <h1 style="color: black;">Почему стоит выбрать нас</h1>
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -536,10 +541,6 @@
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
           <div class="links">
-            <ul>
-              <li><a href="cart.html">cart</a></li>
-              <li><a href="checkout.html">checkout</a></li>
-            </ul>
           </div>
         </div>
       </div>
