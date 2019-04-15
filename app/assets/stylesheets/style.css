@@ -1635,3 +1635,7 @@ label{
 .of_about_wrapper {
 
 }
+
+.security {
+	background-image: url('security-01.png');
+}
