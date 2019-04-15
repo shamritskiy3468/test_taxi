@@ -9,7 +9,6 @@
   </head>
   <body>
     <div class="of_main_wrapper">
-      <!--header start-->
       <div class="of_header_wrapper">
         <div class="container">
           <div class="row">
@@ -30,6 +29,7 @@
                     <li><a href="<%= new_user_session_path %>">Войти</a></li>
                     <li><a href="<%= user_facebook_omniauth_authorize_path %>">Facebook</a></li>
                   <% else %>
+                    <li><%= link_to 'Личный кабинет', edit_user_registration_path %></li>
                     <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
                   <% end %>
                 </ul>
@@ -39,9 +39,7 @@
           </div>
         </div>
       </div>
-
       <%= yield %>
-
       <div class="of_footer_wrapper">
         <div class="container">
           <div class="row">
@@ -151,8 +149,6 @@
           </div>
         </div>
       </div>
-      <!--footer end-->
-      <!--copyright start-->
       <div class="of_copyright_wrapper">
         <div class="container">
           <div class="row">
