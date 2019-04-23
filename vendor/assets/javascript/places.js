@@ -1,16 +1,12 @@
 // Place all the behaviors and hooks related to the matching controller here.
 
 function initMap(lat, lng) {
-    console.log('MARK1');
-    debugger;
     var myCoords = new google.maps.LatLng(lat, lng);
     var mapOptions = {
     center: myCoords,
     zoom: 14
     };
-    debugger;
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    debugger;
     var marker = new google.maps.Marker({
         position: myCoords,
         map: map
@@ -18,8 +14,6 @@ function initMap(lat, lng) {
 }
 
 function initMap2() {
-    console.log('MARK2');
-    debugger;
     var lat = document.getElementById('place_latitude').value;
     var lng = document.getElementById('place_longitude').value;
     // if not defined create default position
@@ -29,17 +23,13 @@ function initMap2() {
         document.getElementById('place_latitude').value = lat;
         document.getElementById('place_longitude').value = lng;
     }
-    debugger;
     var myCoords = new google.maps.LatLng(lat, lng);
-    debugger;
     var mapOptions = {
     center: myCoords,
     zoom: 14
     };
     console.log("Initializeing");
-    debugger;
     var map = new google.maps.Map(document.getElementById('map2'), mapOptions);
-    debugger;
     var marker = new google.maps.Marker({
         position: myCoords,
         animation: google.maps.Animation.DROP,

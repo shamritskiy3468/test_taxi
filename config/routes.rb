@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } 
-  #devise_for :users
   devise_for :admin_users
 
   get 'pages/about'
@@ -20,5 +19,6 @@ Rails.application.routes.draw do
   end
     
   resources :places
+  resources :trips
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

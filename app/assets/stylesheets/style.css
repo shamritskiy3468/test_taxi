@@ -738,6 +738,7 @@ label{
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+	background-image: url('456.jpg');
 }
 .footer_section{
 	width: 100%;
@@ -857,7 +858,7 @@ label{
 .of_inner_banner_wrapper .banner_detail{
 	width: 100%;
 	float: left;
-	background-image: url(http://via.placeholder.com/951x169);
+	background-image: url(cont.jpg);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -874,6 +875,7 @@ label{
 .of_inner_banner_wrapper .banner_img{
 	width: 100%;
 	float: left;
+	background-color: aqua;
 }
 .of_inner_banner_wrapper .banner_img img{
 	height: 169px;
@@ -1632,4 +1634,8 @@ label{
 /* Responsive css End */
 .of_about_wrapper {
 
+}
+
+.security {
+	background-image: url('security-01.png');
 }
