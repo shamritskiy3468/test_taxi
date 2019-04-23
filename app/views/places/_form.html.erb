@@ -4,6 +4,7 @@
         document.addEventListener("DOMContentLoaded", initMap2);
     </script>
 <% end %>
+
 <div class="container">
   <h1 style="color: black; align-content: center;">Куда поедем?</h1>
   <%= form_with(model: place, local: true) do |form| %>
@@ -17,19 +18,16 @@
         </ul>
       </div>
     <% end %>
-
     <div class="form-group">
       <%= form.label "Название поездки" %>
       <i>(Вы можете ввести координаты, если вам скинули геолокацию)</i>
       <%= form.text_field :name, class: "form-control" %>
     </div>
-
     <div class="form-group">
       <%= form.label "Широта" %>
       <i>(Вы можете ввести координаты, если вам скинули геолокацию)</i>
       <%= form.text_field :latitude, class: "form-control" %>
     </div>
-
     <div class="form-group">
       <%= form.label "Долгота" %>
       <%= form.text_field :longitude, class: "form-control" %>
