@@ -21,6 +21,7 @@ gem 'bootstrap'
 gem 'administrate'
 #gem 'omniauth-google-oauth2', '~> 0.2.2'
 gem 'omniauth-facebook'
+gem 'figaro'
 # Use CoffeeScript for .coffee assets and views
 gem "letter_opener", :group => :development
 gem 'coffee-rails'
@@ -41,6 +42,10 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+gem 'awesome_print'
+gem 'pry-nav'
+gem 'pry-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
