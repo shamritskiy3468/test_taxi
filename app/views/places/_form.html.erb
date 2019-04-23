@@ -4,39 +4,51 @@
         document.addEventListener("DOMContentLoaded", initMap2);
     </script>
 <% end %>
+<div class="container">
+  <h1 style="color: black; align-content: center;">Куда поедем?</h1>
+  <%= form_with(model: place, local: true) do |form| %>
+    <% if place.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
+        <ul>
+        <% place.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<%= form_with(model: place, local: true) do |form| %>
-  <% if place.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
-      <ul>
-      <% place.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="form-group">
+      <%= form.label "Название поездки" %>
+      <i>(Вы можете ввести координаты, если вам скинули геолокацию)</i>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "Широта" %>
+      <i>(Вы можете ввести координаты, если вам скинули геолокацию)</i>
+      <%= form.text_field :latitude, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label "Долгота" %>
+      <%= form.text_field :longitude, class: "form-control" %>
+    </div>
+    <p>
+      <div id="map2"></div>
+    </p>
+    <br>
+    <div class="row">
+      <div class="col-xs-6">
+         <div class="actions">
+          <%= link_to 'Назад', places_path, class: 'btn btn-danger btn-lg btn-block' %>
+        </div>
+      </div>
+       <div class="col-xs-6">
+          <div class="actions">
+            <%= form.submit "Создать ", class: 'btn btn-primary btn-lg btn-block' %>
+          </div>
+      </div>
     </div>
   <% end %>
-
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :latitude %>
-    <%= form.text_field :latitude, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :longitude %>
-    <%= form.text_field :longitude, class: "form-control" %>
-  </div>
-
-  <p>
-    <div id="map2"></div>
-  </p>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
