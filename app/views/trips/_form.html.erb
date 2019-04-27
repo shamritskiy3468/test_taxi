@@ -8,19 +8,21 @@
       </div>
       <div class="about_section">
         <div class="container">
-          <br>
             <%= form_with(model: trip, local: true) do |form| %>
             <% if trip.errors.any? %>
               <div id="error_explanation">
                 <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
                 <ul>
                 <% trip.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
+                  <li>
+                    <div class="alert alert-danger" role="alert">
+                      <%= message %>
+                    </div>
+                  </li>
                 <% end %>
                 </ul>
               </div>
             <% end %> 
-
             <div class="form-group">
               <%= form.label "Название вашей поездки" %>
               <%= form.text_field :name, class: "form-control" %>
@@ -34,6 +36,10 @@
             <div class="form-group">
               <%= form.label "Выберите авто из свободных" %>
               <%= form.text_field :car_id, class: "form-control" %>
+            </div>
+
+            <div class="actions">
+              <%= form.hidden_field :user_id, value: current_user.id %>
             </div>
 
             <div class="actions">

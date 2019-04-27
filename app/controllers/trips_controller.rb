@@ -2,7 +2,8 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   def index
-    @trips = Trip.all
+    now_user_id = current_user.id
+    @trips = Trip.all.where("user_id = #{now_user_id}")
   end
 
   def show
@@ -54,18 +55,6 @@ class TripsController < ApplicationController
     end
 
     def trip_params
-      params.require(:trip).permit(:car_id, :driver_id, :name)
-    end
-end
-
-
-def images_count
-    imgs_count = @doc.xpath('(//div[@class="product-item-detail-slider-controls-block"])[1]//img').size
-    if imgs_count > 1
-        imgs_count
-    elsif @doc.at('//div[@class="container-fluid"]//div[contains(@class, "slider-images-container")]//img//@src')
-        1
-    else
-        0
+      params.require(:trip).permit(:car_id, :driver_id, :name, :user_id)
     end
 end

@@ -25,14 +25,17 @@
                 <ul>
                   <li><a href="<%= pages_index_path %>">Домой</a></li>
                   <li><a href="<%= pages_contact_path %>">Связаться</a></li>
-                  <li><a href="<%= new_trip_path %>">Заказ</a></li> 
                   <% if !user_signed_in? %>
                     <li><%= link_to 'Регистрация', new_user_registration_path %></li>
                     <li><a href="<%= new_user_session_path %>">Войти</a></li>
                     <li><a href="<%= user_facebook_omniauth_authorize_path %>">Facebook</a></li>
                   <% else %>
+                    <li><a href="<%= new_trip_path %>">Заказ</a></li> 
                     <li><%= link_to 'Личный кабинет', edit_user_registration_path %></li>
                     <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
+                  <% end %>
+                  <% if user_signed_in? %>
+                    <li><a href="<% edit_user_registration_path%>"><img src="<%= image_url(current_user.image) %>" style="border-radius: 50%;"></a></li>
                   <% end %>
                 </ul>
                 <input type="text" name="search" placeholder="Search" class="form-control">
@@ -123,26 +126,23 @@
                 <ul>
                   <li>
                     <div class="footer_section">
-                      <span class="footer_ico flaticon-placeholder-1"></span>
-                      <span class="footer_detail">230 Mayberry Dr, Aberdeen, MD, 21001</span>
+                      <a href="https://vk.com/id91206722">
+                        <img src="<%= image_url('vk.png') %>">
+                      </a>
                     </div>
                   </li>
                   <li>
                     <div class="footer_section">
-                      <span class="footer_ico flaticon-phone-receiver"></span>
-                      <span class="footer_detail">+659874123, +659874124</span>
+                      <a href="https://www.facebook.com/">
+                        <img src="<%= image_url('facebook.png') %>">
+                      </a>
                     </div>
                   </li>
                   <li>
                     <div class="footer_section">
-                      <span class="footer_ico flaticon-mail-black-envelope-symbol"></span>
-                      <span class="footer_detail"><a href="#">yourhello@yourmail.com</a></span>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="footer_section">
-                      <span class="footer_ico flaticon-fax-machine"></span>
-                      <span class="footer_detail">+659874123, +659874124</span>
+                      <a href="https://instagram.com">
+                         <img src="<%= image_url('insta.png') %>">
+                      </a>
                     </div>
                   </li>
                 </ul>

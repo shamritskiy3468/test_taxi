@@ -1,0 +1,18 @@
+
+<article class="trip">
+	<section class="trip-head">
+    <h2><%= link_to trip.name, trip_path(trip) %></h2>
+		<small>
+			<time>
+
+			</time>
+      |
+			<%= link_to 'Просмотреть', edit_trip_path(trip) %>
+      |
+      <%= link_to 'Удалить', trip_path(trip), method: :delete, data: { confirm: 'Вы уверены?' } %>
+		</small>
+	</section>
+	<section class="trip-body">
+		
+	</section>
+</article>

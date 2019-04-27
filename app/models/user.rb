@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable, :trackable
+         :recoverable, :rememberable, :validatable, :trackable
   devise :omniauthable, :omniauth_providers => [:facebook]
 
   def self.new_with_session(params, session)
@@ -13,7 +13,7 @@ class User < ApplicationRecord
       end
     end
   end
-  
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -21,5 +21,10 @@ class User < ApplicationRecord
       user.name = auth.info.name   # assuming the user model has a name
       user.image = auth.info.image # assuming the user model has an image
     end
+  end
+
+  def destroy
+    current_user.invalidate_session!
+    super
   end
 end

@@ -1,0 +1,11 @@
+article.post {
+	margin-bottom: 1em;
+	padding: 1em 0;
+	border-bottom: 1px solid black;
+}
+h2 {
+	margin-bottom: 0;
+}
+section.trip-body {
+	padding: .5em 0;
+}
