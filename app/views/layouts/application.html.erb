@@ -34,8 +34,12 @@
                     <li><%= link_to 'Личный кабинет', edit_user_registration_path %></li>
                     <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
                   <% end %>
-                  <% if user_signed_in? %>
-                    <li><a href="<% edit_user_registration_path%>"><img src="<%= image_url(current_user.image) %>" style="border-radius: 50%;"></a></li>
+                  <% if user_signed_in?%>
+                    <% if current_user.image %>
+                      <li><a href="<% edit_user_registration_path %>"><img src="<%= image_url(current_user.image) %>" style="border-radius: 50%;"></a></li>
+                    <% else %>
+                      <li><a href="<% edit_user_registration_path%>"><img src="<%= image_url('nophoto.png') %>" width="40px" height="40px" style="border-radius: 50%;"></a></li>
+                    <% end %>
                   <% end %>
                 </ul>
                 <input type="text" name="search" placeholder="Search" class="form-control">
@@ -52,11 +56,11 @@
               <div class="widget widget_about">
                 <div class="footer_section">
                   <div class="footer_logo">
-                    <img src="images/logo.png" alt="">
+                    <img src="<%= image_url('logo.png') %>" alt="">
                   </div>
-                  <p>We are Organic Food!</p>
-                  <p>We have specialized in delivery of organic food/ products.</p>
-                  <p>With more than 15 years of experience we can proudly say that we are one of the best in business, a trusted supplier for more than 1000 companies.</p>
+                  <p>Заказывайте такси проще, чем когда-либо</p>
+                  <p>follow us in social and help us build new taxi age.</p>
+                  <p></p>
                 </div>
               </div>
             </div>

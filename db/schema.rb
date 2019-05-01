@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_27_155606) do
+ActiveRecord::Schema.define(version: 2019_05_01_094922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 2019_04_27_155606) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.bigint "card_number"
+    t.string "card_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cars", force: :cascade do |t|
     t.string "name"
     t.string "car_number"
@@ -40,6 +47,9 @@ ActiveRecord::Schema.define(version: 2019_04_27_155606) do
     t.decimal "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "trip_id"
+    t.string "name"
+    t.index ["trip_id"], name: "index_destinations_on_trip_id"
   end
 
   create_table "drivers", force: :cascade do |t|
@@ -57,6 +67,8 @@ ActiveRecord::Schema.define(version: 2019_04_27_155606) do
     t.decimal "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "trip_id"
+    t.index ["trip_id"], name: "index_places_on_trip_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -93,11 +105,15 @@ ActiveRecord::Schema.define(version: 2019_04_27_155606) do
     t.string "uid"
     t.string "name"
     t.text "image"
+    t.string "last_name"
+    t.string "phone"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "destinations", "trips"
   add_foreign_key "drivers", "trips"
+  add_foreign_key "places", "trips"
   add_foreign_key "trips", "cars"
   add_foreign_key "trips", "drivers"
   add_foreign_key "trips", "users"

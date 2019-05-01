@@ -17,7 +17,8 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = Trip.new(trip_params)
+    binding.pry
+    @trip = Trip.new(trip_params) 
     respond_to do |format|
       if @trip.save
         format.html { redirect_to @trip, notice: 'Place was successfully created.' }
@@ -55,6 +56,6 @@ class TripsController < ApplicationController
     end
 
     def trip_params
-      params.require(:trip).permit(:car_id, :driver_id, :name, :user_id)
+      params.require(:trip).permit(:car_id, :driver_id, :name, :user_id, place_attributes: [:latitude, :longitude], destination_attributes: [:latitude, :longitude])
     end
 end

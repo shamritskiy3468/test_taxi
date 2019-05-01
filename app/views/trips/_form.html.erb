@@ -1,3 +1,11 @@
+<% provide :head_tags do %>
+    <meta name='turbolinks-visit-control' content='reload'>
+    <script>
+        document.addEventListener("DOMContentLoaded", initMap2);
+        document.addEventListener("DOMContentLoaded", initMap3);
+    </script>
+<% end %>
+
 <div class="of_about_wrapper" style="background-image: url('map2.jpg');">
   <div class="container">
     <div class="row">
@@ -30,21 +38,73 @@
 
             <div class="form-group">
               <%= form.label "Выберите водителя из свободных" %>
-              <%= form.text_field :driver_id, class: "form-control" %>
+              <%= form.select(:driver_id, Driver.all.collect {|p| [ p.name, p.id ] }, {include_blank: "Водителя"}, { :class => 'form-control' }) %>
             </div>
-
             <div class="form-group">
               <%= form.label "Выберите авто из свободных" %>
-              <%= form.text_field :car_id, class: "form-control" %>
+              <%= form.select(:car_id, Car.all.collect {|p| [ p.name, p.id ] }, {include_blank: "Выберите желаемую машину"}, { :class => 'form-control' }) %>
             </div>
-
             <div class="actions">
               <%= form.hidden_field :user_id, value: current_user.id %>
             </div>
 
+            <div class="row">
+
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <%= form.fields_for :place, Place.new do |fform| %>
+                    <div class="form-group">
+                      <%= fform.label "Широта" %>
+                      <i>(Вы можете ввести координаты, если вам скинули геолокацию)</i>
+                      <%= fform.text_field :latitude, class: "form-control" %>
+                    </div>
+                    <div class="form-group">
+                      <%= fform.label "Долгота" %>
+                      <%= fform.text_field :longitude, class: "form-control" %>
+                    </div>
+                    <p>
+                      Выберите место, откуда вас нужно забрать:
+                    </p>
+                  <% end %>
+                </div>
+                  <br>
+                  <div id="map2">  
+                  </div>
+                </div>
+
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <%= form.fields_for :destination, Destination.new do |ffform| %>
+                    <div class="form-group">
+                      <%= ffform.label "Широта" %>
+                      <i>(Вы можете ввести координаты, если вам скинули геолокацию)</i>
+                      <%= ffform.text_field :latitude, class: "form-control" %>
+                    </div>
+                    <div class="form-group">
+                      <%= ffform.label "Долгота" %>
+                      <%= ffform.text_field :longitude, class: "form-control" %>
+                    </div>
+                    <p>
+                      Выберите место куда вам нужно приехать:
+                    </p>
+                  <% end %>
+                </div>
+                <br>
+                <div id="map3"></div>
+              </div>
+            </div>
+
+            <hr class="style2">
             <div class="actions">
-              <%= link_to 'Назад', trips_path, class: 'btn btn-warning btn-lg' %>
-              <%= form.submit "Поехали!", class: "btn btn-primary btn-lg" %>
+              <br>
+              <div class="row">
+                <div class="col-xs-6">
+                  <%= link_to 'Назад', trips_path, class: 'btn btn-warning btn-lg btn-block' %>
+                </div>
+                <div class="col-xs-6">
+                  <%= form.submit "Поехали!", class: "btn btn-primary btn-lg btn-block" %>
+                </div>
+              </div>
             </div>
           <% end %>
           </div>
