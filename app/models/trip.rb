@@ -6,4 +6,5 @@ class Trip < ApplicationRecord
   has_one :destination, dependent: :destroy
   accepts_nested_attributes_for :place
   accepts_nested_attributes_for :destination
+  validates_presence_of :place, :destination
 end

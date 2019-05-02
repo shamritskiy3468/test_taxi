@@ -1,32 +1,73 @@
 <div class="container">
-<style type="text/css">
-  @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
-  @import url(https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css);
-.hm-gradient {
-    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-}
-.darken-grey-text {
-    color: #2E2E2E;
-}
-</style>
-  <% if @trips.size == 0 %>
-    <div class="row mb-4">
-      <div class="col-md-12">
-        <div class="card" style="background-color: #212121;">
-          <div class="text-white text-center d-flex align-items-center py-5 px-4 my-5">
-            <div>
-              <h1 class="card-title pt-3 mb-5 font-bold"><strong>У вас ещё нет сохранённых поездок...</strong></h1>
-              <p class="mx-5 mb-5">Но это легко поправить))) ,
-                  laboriosam, voluptatem, optio vero odio nam sit officia accusamus
-                  minus error nisi architecto nulla ipsum dignissimos. Odit sed qui,
-                  dolorum!.</p>
-              <a class="btn btn-outline-white" href="<%= new_trip_path %>"><i class="fa fa-clone left"></i> Поехали! </a>
+  <style type="text/css">
+    @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+    @import url(https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css);
+    .hm-gradient {
+       background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    }
+    .darken-grey-text {
+      color: #2E2E2E;
+    }
+  </style>
+    <% if @trips.size == 0 %>
+      <div class="row mb-4">
+        <div class="col-md-12">
+          <div class="card" style="background-color: #212121;">
+            <div class="text-white text-center d-flex align-items-center py-5 px-4 my-5">
+              <div>
+                <h1 class="card-title pt-3 mb-5 font-bold"><strong>У вас ещё нет сохранённых поездок...</strong></h1>
+                <p class="mx-5 mb-5">Но это легко поправить))) Быстро поехали! </p>
+                <a class="btn btn-outline-white" href="<%= new_trip_path %>"><i class="fa fa-clone left"></i> Поехали! </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  <% else %>
-    <%= render @trips %>
-  <% end %> 
-</div>
+    <% else %>
+      <%= render @trips %>
+       <input id="created_at_time" type="hidden" name="time" value="<%= (Time.now - @trips.last.created_at.to_time)/60 %>">
+    <% end %>
+  </div>
+  <div class="container">
+    <% if @trips.map { |trip| (Time.now - trip.created_at.to_time)/60 < 10 ? true : false }.any? { |a| a == true } %>
+      <div class="alert alert-danger" role="alert">
+        Вы не можете заказть такси сейчас, с прошлого заказа еще не прошло и 15 минут...
+      </div>
+      <div class="alert alert-warning" role="alert">
+        <div id="clockdiv"></div>
+      </div>
+    <% else %>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <%= link_to 'Новый заказ', new_trip_path, class: 'btn btn-primary btn-lg btn-block mb-4'%>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    <% end %>  
+  </div>
+
+  <script type="text/javascript">
+  var time_in_minutes = 10 - parseInt(document.getElementById('created_at_time').value, 10);
+  var current_time = Date.parse(new Date());
+  var deadline = new Date(current_time + time_in_minutes * 60 * 1000);
+  function time_remaining(endtime) {
+    var t = Date.parse(endtime) - Date.parse(new Date());
+    var seconds = Math.floor( (t / 1000) % 60 );
+    var minutes = Math.floor( (t / 1000/60) % 60 );
+    var hours = Math.floor( (t / (1000*60*60)) % 24 );
+    var days = Math.floor( t / (1000*60*60*24) );
+    return {'total': t, 'days': days, 'hours': hours, 'minutes': minutes, 'seconds':seconds};
+  }
+  function run_clock(id, endtime) {
+    var clock = document.getElementById(id);
+    function update_clock() {
+      var t = time_remaining(endtime);
+      clock.innerHTML = 'Машиина прибудет через ' + t.minutes + ' минут ' + t.seconds + ' секунд';
+      if(t.total <= 0){ clearInterval(timeinterval); }
+    }
+    update_clock();
+    var timeinterval = setInterval(update_clock, 1000);
+  }
+  run_clock('clockdiv', deadline);
+</script>

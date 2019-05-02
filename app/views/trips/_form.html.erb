@@ -30,7 +30,7 @@
                 <% end %>
                 </ul>
               </div>
-            <% end %> 
+            <% end %>
             <div class="form-group">
               <%= form.label "Название вашей поездки" %>
               <%= form.text_field :name, class: "form-control" %>
@@ -54,6 +54,11 @@
                 <div class="form-group">
                   <%= form.fields_for :place, Place.new do |fform| %>
                     <div class="form-group">
+                      <%= fform.label "Название" %>
+                      <i>(своё название места отбытия)</i>
+                      <%= fform.text_field :name, class: "form-control" %>
+                    </div>
+                    <div class="form-group">
                       <%= fform.label "Широта" %>
                       <i>(Вы можете ввести координаты, если вам скинули геолокацию)</i>
                       <%= fform.text_field :latitude, class: "form-control" %>
@@ -75,6 +80,11 @@
               <div class="col-xs-6">
                 <div class="form-group">
                   <%= form.fields_for :destination, Destination.new do |ffform| %>
+                    <div class="form-group">
+                      <%= ffform.label "Название" %>
+                      <i>(своё название места отбытия)</i>
+                      <%= ffform.text_field :name, class: "form-control" %>
+                    </div>
                     <div class="form-group">
                       <%= ffform.label "Широта" %>
                       <i>(Вы можете ввести координаты, если вам скинули геолокацию)</i>

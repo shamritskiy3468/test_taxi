@@ -1,5 +1,9 @@
-<h2 style="color: black;">Forgot your password?</h2>
 <div class="container">
+	<div class="row">
+		<div class="form-group">
+			<h2 style="color: black;">Забыли свой пароль? Не беда!</h2>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-xs-8">
 			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>

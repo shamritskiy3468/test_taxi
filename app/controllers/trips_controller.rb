@@ -56,6 +56,6 @@ class TripsController < ApplicationController
     end
 
     def trip_params
-      params.require(:trip).permit(:car_id, :driver_id, :name, :user_id, place_attributes: [:latitude, :longitude], destination_attributes: [:latitude, :longitude])
+      params.require(:trip).permit(:car_id, :driver_id, :name, :user_id, place_attributes: [:latitude, :longitude, :name], destination_attributes: [:latitude, :longitude, :name])
     end
 end

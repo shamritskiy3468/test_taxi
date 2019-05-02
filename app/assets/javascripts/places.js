@@ -97,44 +97,52 @@ function initMap3() {
     });
 }
 
-        var marker1, marker2;
-      var poly, geodesicPoly;
-      function initMapDist() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 1,
-          center: {lat: 53.932685, lng: 27.646016}
-        });
+    var marker1, marker2;
+    var poly, geodesicPoly;
 
-        map.controls[google.maps.ControlPosition.TOP_CENTER].push(
-            document.getElementById('info'));
+  function initMapDist() {
+    var p_lat = parseFloat(document.getElementById('place_lat').value);
+    var p_lon = parseFloat(document.getElementById('place_lon').value);
+    var d_lat = parseFloat(document.getElementById('dist_lat').value);
+    var d_lon = parseFloat(document.getElementById('dist_lon').value);
+    console.log(p_lat);
+    console.log(p_lon);
+    console.log(d_lat);
+    console.log(d_lon);
 
-        marker1 = new google.maps.Marker({
-          map: map,
-          draggable: true,
-          position: {lat: 53.931413, lng: 27.646213 }
-        });
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4,
+      center: {lat: d_lat, lng: d_lon}
+    });
 
-        marker2 = new google.maps.Marker({
-          map: map,
-          draggable: true,
-          position: {lat: 53.919659, lng: 27.595443 }
-        });
+    marker1 = new google.maps.Marker({
+      map: map,
+      draggable: true,
+      position: {lat: p_lat, lng: p_lon}
+    });
 
-        var bounds = new google.maps.LatLngBounds(
-            marker1.getPosition(), marker2.getPosition());
+    marker2 = new google.maps.Marker({
+      map: map,
+      draggable: true,
+      position: {lat: d_lat, lng: d_lon}
+    });
+
+    var bounds = new google.maps.LatLngBounds(
+        marker1.getPosition(), marker2.getPosition());
         map.fitBounds(bounds);
 
-        poly = new google.maps.Polyline({
-          strokeColor: '#1ec310',
-          strokeOpacity: 1.0,
-          strokeWeight: 3,
-          map: map,
-        });
+    poly = new google.maps.Polyline({
+      strokeColor: '#FF0000',
+      strokeOpacity: 1.0,
+      strokeWeight: 3,
+      map: map,
+    });
 
-        geodesicPoly = new google.maps.Polyline({
-          strokeColor: '#CC0099',
-          strokeOpacity: 1.0,
-          strokeWeight: 3,
-          map: map
-        });
-      }
+    geodesicPoly = new google.maps.Polyline({
+      strokeColor: '#CC0099',
+      strokeOpacity: 1.0,
+      strokeWeight: 3,
+      geodesic: true,
+      map: map
+    });
+  }

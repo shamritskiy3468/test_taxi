@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :places
     resources :users
     resources :trips
+    resources :destinations
     root to: "cars#index"
   end
     
