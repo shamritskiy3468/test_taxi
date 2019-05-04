@@ -1,7 +1,9 @@
 class ContactMailer < ApplicationMailer
-	before_action :authenticate_user!
+	default from: "shamritskiy3468@gmail.com"
 	
-	def contact_mail(contact_data)
-		mail(to: "shamritskiy3468@gmail.com", subject: 'Welcome to My Awesome Site')
-	end
+	def contact_mail(user)
+    @user = user
+    mail(:to => user.email,
+         :subject => "The new account #{user.name} is active and this is TEST.")
+  end
 end

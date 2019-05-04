@@ -24,8 +24,8 @@ function initMap2() {
     }
     var myCoords = new google.maps.LatLng(lat, lng);
     var mapOptions = {
-    center: myCoords,
-    zoom: 16
+        center: myCoords,
+        zoom: 16
     };
     var map = new google.maps.Map(document.getElementById('map2'), mapOptions);
     var marker = new google.maps.Marker({
@@ -66,8 +66,8 @@ function initMap3() {
     }
     var myCoords = new google.maps.LatLng(lat, lng);
     var mapOptions = {
-    center: myCoords,
-    zoom: 16
+        center: myCoords,
+        zoom: 16
     };
     var map = new google.maps.Map(document.getElementById('map3'), mapOptions);
     var marker = new google.maps.Marker({
@@ -105,26 +105,25 @@ function initMap3() {
     var p_lon = parseFloat(document.getElementById('place_lon').value);
     var d_lat = parseFloat(document.getElementById('dist_lat').value);
     var d_lon = parseFloat(document.getElementById('dist_lon').value);
-    console.log(p_lat);
-    console.log(p_lon);
-    console.log(d_lat);
-    console.log(d_lon);
+
+    var start_point = new google.maps.LatLng(p_lon, p_lat);
+    var end_point = new google.maps.LatLng(d_lon, d_lat);
 
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 4,
-      center: {lat: d_lat, lng: d_lon}
+      center: start_point
     });
 
     marker1 = new google.maps.Marker({
       map: map,
-      draggable: true,
-      position: {lat: p_lat, lng: p_lon}
+      draggable: false,
+      position: start_point
     });
 
     marker2 = new google.maps.Marker({
       map: map,
-      draggable: true,
-      position: {lat: d_lat, lng: d_lon}
+      draggable: false,
+      position: end_point
     });
 
     var bounds = new google.maps.LatLngBounds(
@@ -132,7 +131,7 @@ function initMap3() {
         map.fitBounds(bounds);
 
     poly = new google.maps.Polyline({
-      strokeColor: '#FF0000',
+      strokeColor: '#ef0000',
       strokeOpacity: 1.0,
       strokeWeight: 3,
       map: map,
@@ -145,4 +144,14 @@ function initMap3() {
       geodesic: true,
       map: map
     });
+
+    update();
+
+  }
+
+  function update() {
+        var path = [marker1.getPosition(), marker2.getPosition()];
+        poly.setPath(path);
+        geodesicPoly.setPath(path);
+        var heading = google.maps.geometry.spherical.computeHeading(path[0], path[1]);
   }

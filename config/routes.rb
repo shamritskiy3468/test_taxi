@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'pages/index'
   get 'pages/contact'
   get 'pages/home'
+	get 'pages/mail_user_with_information'
 
   root to: "pages#index"
 
@@ -18,8 +19,8 @@ Rails.application.routes.draw do
     resources :destinations
     root to: "cars#index"
   end
-    
+	
   resources :places
   resources :trips
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end

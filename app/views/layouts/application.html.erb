@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+Rails.application.credentials.google_maps_api_key+'&libraries=geometry,places'%>
+    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+Rails.application.credentials.google_maps_api_key+'&libraries=geometry'%>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= content_for(:head_tags) %>
   </head>
@@ -25,22 +25,22 @@
                 <ul>
                   <li><a href="<%= pages_index_path %>">Домой</a></li>
                   <li><a href="<%= pages_contact_path %>">Связаться</a></li>
-                  <% if !user_signed_in? %>
-                    <li><%= link_to 'Регистрация', new_user_registration_path %></li>
-                    <li><a href="<%= new_user_session_path %>">Войти</a></li>
-                    <li><a href="<%= user_facebook_omniauth_authorize_path %>">Facebook</a></li>
-                  <% else %>
-                    <li><a href="<%= trips_path %>">Заказы</a></li> 
-                    <li><%= link_to 'Личный кабинет', edit_user_registration_path %></li>
-                    <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
-                  <% end %>
-                  <% if user_signed_in?%>
-                    <% if current_user.image %>
-                      <li><a href="<% edit_user_registration_path %>"><img src="<%= image_url(current_user.image) %>" style="border-radius: 50%;"></a></li>
-                    <% else %>
-                      <li><a href="<% edit_user_registration_path%>"><img src="<%= image_url('nophoto.png') %>" width="40px" height="40px" style="border-radius: 50%;"></a></li>
-                    <% end %>
-                  <% end %>
+										<% if !user_signed_in? %>
+											<li><%= link_to 'Регистрация', new_user_registration_path %></li>
+											<li><a href="<%= new_user_session_path %>">Войти</a></li>
+											<li><a href="<%= user_facebook_omniauth_authorize_path %>">Facebook</a></li>
+										<% else %>
+											<li><a href="<%= trips_path %>">Заказы</a></li> 
+											<li><%= link_to 'Личный кабинет', edit_user_registration_path %></li>
+											<li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
+										<% end %>
+										<% if user_signed_in?%>
+											<% if current_user.image %>
+												<li><a href="<% edit_user_registration_path %>"><img src="<%= image_url(current_user.image) %>" style="border-radius: 50%;"></a></li>
+											<% else %>
+												<li><a href="<% edit_user_registration_path%>"><img src="<%= image_url('nophoto.png') %>" width="40px" height="40px" style="border-radius: 50%;"></a></li>
+											<% end %>
+										<% end %>
                 </ul>
                 <input type="text" name="search" placeholder="Search" class="form-control">
               </div>
@@ -56,38 +56,39 @@
               <div class="widget widget_about">
                 <div class="footer_section">
                   <div class="footer_logo">
-                    <img src="<%= image_url('logo.png') %>" alt="">
+                    <img src="<%= image_url('main_logo.png') %>" width="100px" height="100px" alt="">
                   </div>
                   <p>Заказывайте такси проще, чем когда-либо</p>
                   <p>follow us in social and help us build new taxi age.</p>
-                  <p></p>
+                  <p><li><a href=""><img src="<%= image_url('en.png') %>" alt="" width="40px" height="40px"></a></li></p>
+                  <p><li><a href=""><img src="<%= image_url('rus.png') %>" alt="" width="40px" height="40px"></a></li></p>
                 </div>
               </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
               <div class="widget widget_product">
                 <div class="ch_heading_wrapper">
-                  <h1>our products</h1>
+                  <h1>Продукты</h1>
                 </div>
                 <ul>
                   <li>
                     <div class="footer_section">
-                      <p><a href="#">meat</a></p>
+                      <p><a href="#">Лабы по рису</a></p>
                     </div>
                   </li>
                   <li>
                     <div class="footer_section">
-                      <p><a href="#">vegetable</a></p>
+                      <p><a href="#">Лабы по СИТИОД</a></p>
                     </div>
                   </li>
                   <li>
                     <div class="footer_section">
-                      <p><a href="#">fruits</a></p>
+                      <p><a href="#">Лабы по Эконометрика</a></p>
                     </div>
                   </li>
                   <li>
                     <div class="footer_section">
-                      <p><a href="#">dairy products</a></p>
+                      <p><a href="#">Лабы по БУ</a></p>
                     </div>
                   </li>
                 </ul>
@@ -96,22 +97,23 @@
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
               <div class="widget widget_info">
                 <div class="ch_heading_wrapper">
-                  <h1>information</h1>
+                  <h1>Информация</h1>
                 </div>
                 <ul>
                   <li>
                     <div class="footer_section">
-                      <p>return</p>
+                      <p>мы находимся по адресу:</p>
+											<p>ул. Якуба Колоса 28, Пентхаус</p>
                     </div>
                   </li>
                   <li>
                     <div class="footer_section">
-                      <p>delivery</p>
+                      <p>График работы: 24/7/365</p>
                     </div>
                   </li>
                   <li>
                     <div class="footer_section">
-                      <p>services</p>
+                      <p>Скидки всем клиентам с 2х летним стажем</p>
                     </div>
                   </li>
                   <li>
@@ -125,7 +127,7 @@
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
               <div class="widget widget_contact">
                 <div class="ch_heading_wrapper">
-                  <h1>get in touch</h1>
+                  <h1>На связи</h1>
                 </div>
                 <ul>
                   <li>
