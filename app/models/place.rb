@@ -1,3 +1,4 @@
 class Place < ApplicationRecord
-	belongs_to :trip
+	belongs_to :trip, optional: true
+	validates_presence_of :latitude, :longitude, :name
 end

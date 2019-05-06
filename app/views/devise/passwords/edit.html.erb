@@ -9,7 +9,7 @@
         <div class="about_section">
           <div class="container">
             <br>
-              <h2>Change your password</h2>
+              <h2 style="color: black;">Сменить ваш пароль</h2>
               <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
                 <%= render "devise/shared/error_messages", resource: resource %>
                 <%= f.hidden_field :reset_password_token %>

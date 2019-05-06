@@ -1,3 +1,7 @@
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+<% end %>
+
 <div class="loader_wrapper">
 	<div class="loader">
 		<img src="images/loader.gif" alt="" />
@@ -70,7 +74,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="ch_heading_wrapper">
-						<h1>get in touch</h1>
+						<h1 style="color: black;">Оставайтесь на связи</h1>
 					</div>
 				</div>
 				<div class="col-lg-10 col-md-10 col-m-12 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
@@ -78,28 +82,27 @@
 						<div class="row">
 							<div class="col-md-6 col-sm-12">
 								<div class="form-group">
-									<input type="text" name="name" placeholder="Name" class="form-control" id="name">
+									<input style="background-color: #edfdff;" type="text" name="name" placeholder="<%= current_user.name %>" class="form-control" id="name" value="<%= current_user.name %>">
 								</div>		
 								<div class="form-group">
-									<input type="text" name="email" placeholder="Email" class="form-control" id="email">
+									<input style="background-color: #edfdff;" type="text" name="email" placeholder="<%= current_user.email %>" class="form-control" id="email" value="<%= current_user.email %>">
 								</div>						
 							</div>
 							<div class="col-md-6 col-sm-12">
 								<div class="form-group">
-									<input type="text" name="phone" placeholder="Phone" class="form-control" id="phone">
+									<input type="text" name="phone" placeholder="Телефон" class="form-control" id="phone">
 								</div>		
 								<div class="form-group">
-									<input type="text" name="subject" placeholder="Subject" class="form-control" id="subject">
+									<input type="text" name="subject" placeholder="Тема" class="form-control" id="subject">
 								</div>						
 							</div>
 							<div class="col-md-12 col-sm-12">
 								<div class="form-group">
-									<textarea id="message" placeholder="Message" class="form-control"></textarea>
+									<textarea id="message" placeholder="Сообщение" class="form-control"></textarea>
 								</div>		
 								<div class="of_btn_wrapper text-center">
-									<a id="submit" class="of_btn">send</a>
+									<a class="of_btn">отправить</a>
 								</div>		
-								<p id="error" class="text-center"></p>			
 							</div>
 						</div>
 					</div>
